@@ -1,0 +1,16 @@
+.venv/
+site/
+__pycache__/
+*.py[cod]
+.cache/
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+.DS_Store
+Thumbs.db
+
+# 已移除的历史源文档，避免误恢复并提交
+软件测试知识点总结.md
