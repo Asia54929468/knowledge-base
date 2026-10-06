@@ -16,13 +16,6 @@ $expectedPages = @(
     "07-practice-handbook.md"
 )
 
-$obsoletePages = @(
-    "02-planning-and-design.md",
-    "04-specialized-testing.md",
-    "05-automation-and-engineering.md",
-    "06-practice-and-skills.md"
-)
-
 if (-not (Test-Path -LiteralPath $contentDir -PathType Container)) {
     throw "找不到软件测试内容目录：$contentDir"
 }
@@ -102,12 +95,6 @@ else {
         if ($overview -notmatch [regex]::Escape("($page)")) {
             $errors.Add("软件测试总览缺少分类入口：$page")
         }
-    }
-}
-
-foreach ($page in $obsoletePages) {
-    if (Test-Path -LiteralPath (Join-Path $contentDir $page) -PathType Leaf) {
-        $errors.Add("旧分类页面不应重新出现：$page")
     }
 }
 

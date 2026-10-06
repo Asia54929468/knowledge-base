@@ -1,4 +1,4 @@
-# 个人技术笔记
+# Asia知识库
 
 这是一个使用 MkDocs Material 构建的本地优先技术笔记网站。软件测试内容按 7 个分类长页面组织，后续内容直接在 `docs/` 中维护。
 
@@ -22,7 +22,7 @@
 powershell -ExecutionPolicy Bypass -File .\preview.ps1
 ```
 
-首次运行会在本目录创建 `.venv` 并安装固定版本的依赖。浏览器访问 `http://127.0.0.1:8000` 即可查看。
+首次运行会在本目录创建 `.venv`，并安装 `requirements.txt` 中固定的直接依赖版本。浏览器访问 `http://127.0.0.1:8000` 即可查看。
 
 ## 严格构建
 

@@ -24,7 +24,7 @@
 
 ### 1.1 项目目标
 
-本项目把 Markdown 技术笔记转换为可搜索、可导航的静态网站。目前软件测试知识按 7 个分类长页面组织，并提供中文界面、中英文搜索、页内目录、上一篇/下一篇、代码复制和明暗主题。
+本项目把 Markdown 技术笔记转换为可搜索、可导航的静态网站。目前软件测试知识按 7 个分类长页面组织，并提供中文界面、中英文搜索、页内目录、上一篇/下一篇、代码复制和固定深色主题。
 
 项目采用“本地文件是唯一内容源”的方式维护：
 
@@ -147,7 +147,7 @@ Material 会安装其依赖的 PyMdown Extensions 等包。当前文件只固定
 1. 在独立分支更新版本，不直接在 `main` 上试验。
 2. 阅读 MkDocs、Material 和相关 Actions 的发行说明及安全公告。
 3. 重新创建或更新 `.venv`，执行严格构建和内容核验。
-4. 检查桌面端、移动端、明暗主题、搜索和所有链接。
+4. 检查桌面端、移动端、固定深色主题、搜索和所有链接。
 5. 通过 Pull Request 合并，让 CI 再验证一次。
 6. 不把“能够安装”视为“兼容”；至少保留一次可回退的提交。
 
@@ -165,7 +165,7 @@ Material 9.7.7 在构建时会打印 MkDocs 2.0 兼容性提示。它是上游�
 ## 5. 目录结构与文件职责
 
 ```text
-note/
+knowledge-base/
 ├─ .github/workflows/pages.yml     # GitHub Pages 构建与部署
 ├─ docs/
 │  ├─ index.md                     # 网站首页
@@ -248,7 +248,7 @@ tags:
 Markdown 页面之间优先使用相对 `.md` 链接：
 
 ```markdown
-[接口测试](../software-testing/04-application-testing.md#api-testing)
+[接口测试](docs/software-testing/04-application-testing.md#api-and-service-integration)
 ```
 
 不要写以 `/` 开头的站点绝对路径。项目站点通常部署在 `/<repository>/` 子路径，根路径链接会跳到错误位置。
@@ -362,7 +362,7 @@ Mermaid 适合版本化的文本图表，例如：
 
 1. 在 `pymdownx.superfences` 中增加 Mermaid 自定义围栏配置；
 2. 加载并固定 Mermaid JavaScript 版本，优先使用仓库内受控资源；
-3. 验证明暗主题、打印、移动端和无 JavaScript 场景；
+3. 验证固定深色主题、打印、移动端和无 JavaScript 场景；
 4. 将外部脚本视为供应链依赖并定期升级；
 5. 在 GitHub Pages 上验证子路径和内容安全策略。
 
@@ -375,7 +375,7 @@ Mermaid 适合版本化的文本图表，例如：
 ### 9.1 基础信息与环境变量
 
 ```yaml
-site_name: 个人技术笔记
+site_name: Asia知识库
 site_description: 面向持续学习与查阅的个人技术知识库
 site_url: !ENV [SITE_URL, ""]
 repo_url: !ENV [REPO_URL, ""]
@@ -391,9 +391,9 @@ edit_uri: !ENV [EDIT_URI, ""]
 Material 主题当前启用：
 
 - 中文界面和自定义 SVG favicon；
-- 根据系统偏好切换明暗主题；
-- 分节导航、索引页、返回顶部、页脚前后导航；
-- 跟随滚动的页内目录；
+- 固定 `slate` 深色方案，不读取系统主题偏好，也不显示主题切换按钮；
+- 固定顶部标签、分节导航、独立总览入口、面包屑、返回顶部和页脚前后导航；
+- 桌面端领域化左栏与跟随滚动的右侧页内目录，移动端使用 Material 原生抽屉；
 - 搜索建议、高亮和分享；
 - 代码复制与页面编辑入口。
 
@@ -407,7 +407,7 @@ Material 主题当前启用：
 
 ### 9.4 Markdown 扩展
 
-当前启用告示块、属性列表、Markdown-in-HTML、详情折叠、行内代码高亮、增强代码围栏、代码高亮和目录永久链接。删除扩展前，应搜索项目中是否使用了对应语法。
+当前启用告示块、属性列表、Markdown-in-HTML、增强代码围栏、代码高亮和目录永久链接。删除扩展前，应搜索项目中是否使用了对应语法。
 
 ### 9.5 链接校验
 
@@ -434,7 +434,7 @@ https://<owner>.github.io/<repository>/
 
 ### 10.2 一条命令启动
 
-在 `note` 项目根目录执行：
+在项目根目录执行：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\preview.ps1
@@ -464,8 +464,8 @@ python -m mkdocs build --strict
 
 ### 10.4 编码
 
-- Markdown、YAML、CSS 和脚本统一保存为 UTF-8。
-- 生成脚本明确使用 UTF-8，并将输出 Markdown 写为 UTF-8 无 BOM。
+- Markdown、YAML 和 CSS 统一保存为 UTF-8 无 BOM。
+- 含中文的 PowerShell 脚本保存为 UTF-8 BOM，尤其必须保留 `tools/audit-content.ps1` 的 BOM，以兼容 Windows PowerShell 5.1。
 - 不要使用会依 PowerShell 版本改变默认编码的临时写文件命令覆盖正文。
 - 出现中文乱码时，先检查编辑器右下角的文件编码，再检查终端字体和代码页。
 
@@ -519,14 +519,14 @@ powershell -ExecutionPolicy Bypass -File .\tools\audit-content.ps1
 
 ### 12.1 首次初始化
 
-确认当前位置是 `note` 项目根目录，再执行：
+确认当前位置是项目根目录，再执行：
 
 ```powershell
 git init
 git branch -M main
 git status
 git add .
-git commit -m "docs: initialize personal notes site"
+git commit -m "docs: initialize knowledge base site"
 git remote add origin https://github.com/<OWNER>/<REPOSITORY>.git
 git push -u origin main
 ```
@@ -548,6 +548,7 @@ git push
 
 ### 12.3 提交规范
 
+- `feat:` 新增用户可见的功能、导航或视觉能力；
 - `docs:` 新增或更新笔记；
 - `fix:` 修正文档、链接、脚本或样式错误；
 - `refactor:` 调整目录、拆分页面或重组内容，不改变含义；
@@ -663,7 +664,7 @@ GitHub Pages 是静态文件托管服务。它可以直接发布仓库文件，�
 5. 从 `requirements.txt` 安装依赖；
 6. 执行 `python -m mkdocs build --strict`；
 7. 非 PR 时运行 `actions/configure-pages@v5`；
-8. 使用 `actions/upload-pages-artifact@v4` 上传 `site/`。
+8. 非 PR 时使用 `actions/upload-pages-artifact@v4` 上传 `site/`。
 
 ### 15.3 部署作业
 
@@ -807,7 +808,7 @@ git diff --staged
 3. 在 `mkdocs.yml` 的 `nav` 中加入页面。
 4. 使用相对 `.md` 链接和 `assets/` 资源。
 5. 本地预览并执行严格构建。
-6. 检查桌面、移动端、明暗主题和搜索。
+6. 检查桌面端双层顶栏与侧栏、移动端抽屉、固定深色主题和搜索。
 7. 脱敏后提交。
 
 ### 19.2 新增分类
@@ -829,7 +830,8 @@ git diff --staged
 
 自定义样式位于 `docs/assets/stylesheets/extra.css`。同时检查：
 
-- Material 的浅色和深色 CSS 变量；
+- 固定 `slate` 深色方案的文字、边框、活动项和代码块对比度；
+- 双层顶栏、面包屑、桌面端主侧栏与右侧目录的定位和间距；
 - 320–390px 宽度移动端；
 - 长代码和长链接是否造成横向滚动；
 - 标题是否被固定顶栏遮挡；
@@ -857,7 +859,7 @@ git diff --staged
 - [ ] 文件链接、锚点和图片均可访问；
 - [ ] 中文与英文关键词能在搜索中找到；
 - [ ] 桌面端和手机端没有异常横向滚动或遮挡；
-- [ ] 明暗主题、页内目录、上下页和代码复制正常；
+- [ ] 固定深色主题、双层顶栏、面包屑、桌面侧栏、移动端抽屉、页内目录、上下页和代码复制正常；
 - [ ] 在项目站点子路径下资源地址正确；
 - [ ] 深层 URL 可直接打开和刷新；
 - [ ] `404.html` 已生成，并在实际 Pages 环境验证未找到页面；
@@ -983,7 +985,7 @@ $env:EDIT_URI = "edit/main/docs/"
 - [使用自定义 GitHub Actions 工作流发布 Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 - [GitHub Pages 自定义域名](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
 - [GitHub Actions 部署与 environment](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments)
-- [GitHub 密钥安全](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- [GitHub 密钥安全](https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning)
 
 GitHub 套餐、Actions 版本、Pages 权限和 DNS 地址会变化。执行首次发布、私密发布或自定义域名配置时，应以当日官方文档和仓库界面为准。
 

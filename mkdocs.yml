@@ -1,4 +1,4 @@
-site_name: 个人技术笔记
+site_name: Asia知识库
 site_description: 面向持续学习与查阅的个人技术知识库
 site_url: !ENV [SITE_URL, ""]
 repo_url: !ENV [REPO_URL, ""]
@@ -13,23 +13,14 @@ theme:
     logo: material/notebook-outline
   font: false
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: blue
-      toggle:
-        icon: material/weather-night
-        name: 切换至深色模式
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: light-blue
-      toggle:
-        icon: material/weather-sunny
-        name: 切换至浅色模式
+    scheme: slate
+    primary: indigo
+    accent: light-blue
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
-    - navigation.indexes
+    - navigation.path
     - navigation.top
     - navigation.footer
     - navigation.tracking
@@ -44,13 +35,13 @@ nav:
   - 首页: index.md
   - 软件测试:
       - 知识体系总览: software-testing/index.md
-      - 1. 测试基础与生命周期: software-testing/01-foundations.md
-      - 2. 测试分析、设计与准备: software-testing/02-analysis-and-design.md
-      - 3. 测试执行与质量管理: software-testing/03-execution-and-quality.md
-      - 4. 应用、接口与业务测试: software-testing/04-application-testing.md
-      - 5. 质量属性与专项测试: software-testing/05-quality-attributes.md
-      - 6. 自动化与测试工程: software-testing/06-automation-and-engineering.md
-      - 7. 测试实践手册: software-testing/07-practice-handbook.md
+      - 01 测试基础与生命周期: software-testing/01-foundations.md
+      - 02 测试分析、设计与准备: software-testing/02-analysis-and-design.md
+      - 03 测试执行与质量管理: software-testing/03-execution-and-quality.md
+      - 04 应用、接口与业务测试: software-testing/04-application-testing.md
+      - 05 质量属性与专项测试: software-testing/05-quality-attributes.md
+      - 06 自动化与测试工程: software-testing/06-automation-and-engineering.md
+      - 07 测试实践手册: software-testing/07-practice-handbook.md
 
 plugins:
   - search:
@@ -62,8 +53,6 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
-  - pymdownx.details
-  - pymdownx.inlinehilite
   - pymdownx.superfences
   - pymdownx.highlight:
       anchor_linenums: true

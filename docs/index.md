@@ -1,11 +1,11 @@
 ---
-title: 首页
-description: 个人技术笔记首页
+title: Asia知识库
+description: Asia知识库首页
 ---
 
 <div class="note-hero" markdown>
 
-# 个人技术笔记
+# Asia知识库
 
 把零散总结整理成可搜索、可持续维护的知识体系。每个知识领域拥有独立的总览、学习路径和分类导航。
 

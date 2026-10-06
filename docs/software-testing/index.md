@@ -1,6 +1,7 @@
 ---
 title: 软件测试知识体系
 description: 软件测试基础、分析设计、质量管理、专项测试和工程实践总览
+icon: material/book-open-page-variant-outline
 ---
 
 # 软件测试知识体系
