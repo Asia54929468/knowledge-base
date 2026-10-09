@@ -7,7 +7,7 @@ description: Asia知识库首页
 
 # Asia知识库
 
-把零散总结整理成可搜索、可持续维护的知识体系。每个知识领域拥有独立的总览、学习路径和分类导航。
+把零散总结整理成可搜索、可持续维护的知识体系。每个知识领域拥有独立的总览和分类导航。
 
 [进入软件测试知识库](software-testing/index.md){ .md-button .md-button--primary }
 

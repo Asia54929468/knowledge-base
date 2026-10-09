@@ -7,6 +7,7 @@ edit_uri: !ENV [EDIT_URI, ""]
 
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   favicon: assets/favicon.svg
   icon:
@@ -20,6 +21,7 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
+    - navigation.indexes
     - navigation.path
     - navigation.top
     - navigation.footer
