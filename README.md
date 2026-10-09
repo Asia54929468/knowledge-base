@@ -6,13 +6,12 @@
 
 | 需要了解 | 阅读入口 |
 | --- | --- |
-| 当前进度、遗留任务和下一步 | [当前项目交接](HANDOFF.md) |
-| 项目用途和常用操作 | 本 README |
-| 架构、内容规范、Git/Pages、安全和排障 | [项目技术维护指南](TECHNICAL_GUIDE.md) |
+| Codex 新会话接手规则 | [Codex 项目指令](AGENTS.md) |
+| 当前未完成任务与异常接续 | [项目交接](HANDOFF.md) |
+| 项目用途、本地运行和常用操作 | 本 README |
+| 新需求文件定位、长期规范和排障 | [技术指南任务映射](TECHNICAL_GUIDE.md#如何使用本指南) |
 
-切换会话时默认先读 `HANDOFF.md`。遇到具体维护问题时，再按其中的章节链接查阅技术指南，无需每次完整加载全部长期文档。
-
-网站正文以 `docs/` 为唯一日常维护来源；内容结构和核验方式见技术指南的[内容结构与核验工具](TECHNICAL_GUIDE.md#11-内容结构与核验工具)。
+网站正文以 `docs/` 为唯一日常维护来源；内容结构和核验方式见技术指南的[内容规范与结构维护](TECHNICAL_GUIDE.md#内容规范与结构维护)和[本地构建与基础检查](TECHNICAL_GUIDE.md#本地构建与基础检查)。
 
 ## 本地预览
 
@@ -37,7 +36,7 @@ powershell -ExecutionPolicy Bypass -File .\preview.ps1
 1. 在 `docs/` 下添加 Markdown 文件。
 2. 每篇文章只使用一个一级标题，页面间使用相对 `.md` 链接。
 3. 在 `mkdocs.yml` 的 `nav` 中加入页面。
-4. 本地执行严格构建，确认链接、锚点和导航均无警告。
+4. 本地执行严格构建，再运行 `tools/check-content.ps1`，确认导航、链接、页面结构和搜索索引均正常。
 
 ## GitHub 与 Pages
 
