@@ -1,6 +1,6 @@
 # Asia知识库
 
-这是一个使用 MkDocs Material 构建的本地优先技术笔记网站。软件测试内容按 7 个分类长页面组织，后续内容直接在 `docs/` 中维护。
+这是一个使用 MkDocs Material 构建的本地优先技术笔记网站。目前包含“软件测试”和“接口自动化”两个独立知识领域，正文直接在 `docs/` 中维护。
 
 ## 文档导航
 
@@ -37,6 +37,8 @@ powershell -ExecutionPolicy Bypass -File .\preview.ps1
 2. 每篇文章只使用一个一级标题，页面间使用相对 `.md` 链接。
 3. 在 `mkdocs.yml` 的 `nav` 中加入页面。
 4. 本地执行严格构建，再运行 `tools/check-content.ps1`，确认导航、链接、页面结构和搜索索引均正常。
+
+新增知识领域时，还要同步领域总览、首页入口和动态导航标题；页面如何拆分及何时合并见技术指南的[新增知识领域的组织原则](TECHNICAL_GUIDE.md#新增知识领域的组织原则)。
 
 ## GitHub 与 Pages
 

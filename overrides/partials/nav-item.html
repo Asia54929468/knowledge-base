@@ -26,7 +26,7 @@
   {% if nav_item.meta and nav_item.meta.icon %}
     {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
   {% endif %}
-  <span class="md-ellipsis">
+  <span class="md-ellipsis" data-nav-title="{{ ref.title }}">
     {{ render_title(ref) }}
     {% if nav_item.meta and nav_item.meta.subtitle %}
       <br>
