@@ -1,78 +1,69 @@
 ---
 title: 接口自动化
-description: 使用 pytest、requests 和 PyYAML 搭建可维护的 Python 接口自动化测试框架
+description: 基于 pytest、requests 和 YAML 数据驱动的接口自动化框架设计与工程实践
 icon: material/api
 ---
 
-# Python 接口自动化测试框架搭建手册
+# Python 接口自动化测试框架
+
+<div class="section-lead">基于 pytest、requests 和 YAML 数据驱动，覆盖配置、请求、认证、断言、日志、报告与资源清理。</div>
 
 > 适用版本：Python 3.10+
 >
-> 核心技术：pytest、requests、PyYAML
+> 核心技术：pytest、requests、PyYAML、pytest-html
 >
-> 用途：个人复习，以及从零搭建可维护的接口自动化项目。
+> 框架特征：分层设计、数据驱动、失败诊断、安全拦截与可重复执行。
 
-<div class="section-lead">围绕框架设计、核心代码、测试实践和工程化维护组织内容。既可以按顺序搭建完整项目，也可以根据当前任务直接进入对应主题。</div>
-
-## 主题导航
+## 主题导航 { #topic-navigation }
 
 <div class="grid cards" markdown>
 
--   **设计原则与技术选型**
+-   **1. 框架设计与项目结构**
 
-    明确框架目标、分层边界、核心依赖和扩展能力。
+    先理解分层、依赖方向、目录扩展规则和完整执行链路。
 
-    [开始阅读 →](01-principles-and-stack.md)
+    [进入主题 →](01-framework-design-and-structure.md)
 
--   **项目结构与执行链路**
+-   **2. 项目基础与配置管理**
 
-    了解推荐目录、文件职责、架构分层和用例生命周期。
+    准备根目录文件，并让配置 YAML 与加载器形成闭环。
 
-    [开始阅读 →](02-project-structure-and-flow.md)
+    [进入主题 →](02-foundation-and-configuration.md)
 
--   **项目基础与配置管理**
+-   **3. HTTP 请求与 API Object**
 
-    准备基础文件、环境配置和安全的配置加载方式。
+    实现通用请求客户端，再用最小接口对象演示业务接入。
 
-    [开始阅读 →](03-foundation-and-configuration.md)
+    [进入主题 →](03-http-and-api-object.md)
 
--   **HTTP、数据与断言**
+-   **4. 日志与失败诊断**
 
-    实现请求客户端、YAML 数据加载和公共断言。
+    保留摘要日志、手动详情、失败自动详情、去重和脱敏设计。
 
-    [开始阅读 →](04-http-data-and-assertions.md)
+    [进入主题 →](04-logging-and-diagnostics.md)
 
--   **日志、认证与 API 封装**
+-   **5. pytest 编排与状态管理**
 
-    建立脱敏日志、认证缓存、API Object 和登录测试数据。
+    用 Manager、Fixture 和 Hook 管理认证、资源释放与安全边界。
 
-    [开始阅读 →](05-logging-auth-and-api.md)
+    [进入主题 →](05-pytest-orchestration-and-state.md)
 
--   **Fixture 与测试示例**
+-   **6. 数据驱动、断言与测试实现**
 
-    组合 pytest 公共能力，完成数据驱动和鉴权用例。
+    串起 YAML、数据加载、参数化测试、公共断言和接口调用。
 
-    [开始阅读 →](06-fixtures-and-test-examples.md)
+    [进入主题 →](06-data-driven-assertions-and-tests.md)
 
--   **测试设计与项目搭建**
+-   **7. 测试设计与工程化边界**
 
-    规划场景、断言、状态清理、最小闭环和 CI 流程。
+    判断状态恢复、资源缓存、重试、并行和扩展模块何时需要。
 
-    [开始阅读 →](07-test-design-and-bootstrap.md)
+    [进入主题 →](07-test-design-and-engineering.md)
 
--   **特色设计与工程化**
+-   **8. 运行、排障与验收**
 
-    处理缓存、加密、恢复、重试、并行和报告追溯。
+    按固定步骤运行、定位问题、增加接口并检查框架质量。
 
-    [开始阅读 →](08-reusable-patterns-and-engineering.md)
-
--   **命令、排障与验收**
-
-    快速定位运行问题，复习关键设计并完成项目验收。
-
-    [开始阅读 →](09-commands-troubleshooting-and-review.md)
+    [进入主题 →](08-commands-troubleshooting-and-review.md)
 
 </div>
-
-!!! tip "阅读和搜索"
-    左侧导航用于按框架搭建顺序阅读，右侧目录用于定位当前页面内容。需要快速查找实现时，可以直接搜索类名、fixture、marker 或命令。

@@ -36,8 +36,9 @@ input {
   font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* 扣除纵向滚动条占用宽度，使有无滚动条的页面保持同一左侧基准。 */
 .md-grid {
-  max-width: 86rem;
+  max-width: calc(86rem - (100vw - 100%));
 }
 
 /* 双层顶部栏 */
@@ -452,6 +453,106 @@ input {
   border: 0;
   background: transparent;
   color: var(--note-muted);
+}
+
+/* 响应式执行链路：语义顺序由列表保证，箭头只强化视觉方向。 */
+.execution-flow {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.1rem 0 1.7rem;
+}
+
+.execution-flow__lane {
+  display: grid;
+  grid-template-columns: minmax(6.2rem, 0.32fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--note-border);
+  background: color-mix(in srgb, var(--note-surface) 72%, transparent);
+}
+
+.md-typeset .execution-flow__title {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  border-left: 0.12rem solid var(--note-accent);
+  color: var(--note-ink);
+  font-weight: 680;
+  line-height: 1.45;
+}
+
+.md-typeset ol.execution-flow__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.6rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset ol.execution-flow__steps > li.execution-flow__step {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 0.68rem 0.62rem;
+  border: 1px solid var(--note-border);
+  background: var(--note-surface);
+}
+
+.execution-flow__step:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -1.35rem;
+  width: 1rem;
+  color: var(--note-accent);
+  content: "\2192";
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.md-typeset .execution-flow__step code {
+  display: block;
+  margin-bottom: 0.32rem;
+  overflow-wrap: anywhere;
+  color: var(--note-ink);
+  font-size: 0.64rem;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.execution-flow__step span {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--note-muted);
+  font-size: 0.61rem;
+  line-height: 1.55;
+}
+
+@media screen and (max-width: 60em) {
+  .execution-flow__lane {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .md-typeset ol.execution-flow__steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.45rem;
+  }
+
+  .execution-flow__step:not(:last-child)::after {
+    top: auto;
+    right: 50%;
+    bottom: -1.18rem;
+    content: "\2193";
+    transform: translate(50%, 50%);
+  }
 }
 
 /* 首页内容组件沿用现有结构，改为工作台风格。 */

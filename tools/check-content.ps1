@@ -4,6 +4,43 @@
 
 $ErrorActionPreference = "Stop"
 
+function Remove-HtmlComments {
+    param(
+        [string]$Line,
+        [ref]$InHtmlComment
+    )
+
+    $visibleText = New-Object System.Text.StringBuilder
+    $offset = 0
+
+    while ($offset -lt $Line.Length) {
+        if ($InHtmlComment.Value) {
+            $commentEnd = $Line.IndexOf("-->", $offset, [System.StringComparison]::Ordinal)
+            if ($commentEnd -lt 0) {
+                break
+            }
+
+            $InHtmlComment.Value = $false
+            [void]$visibleText.Append(" ")
+            $offset = $commentEnd + 3
+            continue
+        }
+
+        $commentStart = $Line.IndexOf("<!--", $offset, [System.StringComparison]::Ordinal)
+        if ($commentStart -lt 0) {
+            [void]$visibleText.Append($Line.Substring($offset))
+            break
+        }
+
+        [void]$visibleText.Append($Line.Substring($offset, $commentStart - $offset))
+        [void]$visibleText.Append(" ")
+        $InHtmlComment.Value = $true
+        $offset = $commentStart + 4
+    }
+
+    return $visibleText.ToString()
+}
+
 $projectRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 $docsDir = Join-Path $projectRoot "docs"
 $navTemplatePath = Join-Path $projectRoot "overrides\partials\nav-item.html"
@@ -88,8 +125,16 @@ foreach ($page in $pages) {
     $inFence = $false
     $fenceCharacter = ""
     $fenceLength = 0
+    $inHtmlComment = $false
 
-    foreach ($line in $lines) {
+    foreach ($sourceLine in $lines) {
+        if ($inFence) {
+            $line = $sourceLine
+        }
+        else {
+            $line = Remove-HtmlComments -Line $sourceLine -InHtmlComment ([ref]$inHtmlComment)
+        }
+
         $fenceMatch = [regex]::Match($line, '^ {0,3}(?<marker>`{3,}|~{3,})(?<rest>.*)$')
         if ($fenceMatch.Success) {
             $marker = $fenceMatch.Groups['marker'].Value
@@ -201,6 +246,10 @@ foreach ($page in $pages) {
 
     if ($inFence) {
         $errors.Add("$relativePath 包含未闭合的代码围栏。")
+    }
+
+    if ($inHtmlComment) {
+        $errors.Add("$relativePath 包含未闭合的 HTML 注释。")
     }
 
     if ($h1Count -ne 1) {

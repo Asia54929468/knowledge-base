@@ -7,18 +7,6 @@ description: 组织测试执行、缺陷闭环、质量度量、风险评价与�
 
 <div class="section-lead">让每个测试结论都有证据，让缺陷和风险能够被跟踪、分析和决策。</div>
 
-## 本页解决的问题 { #execution-quality-page-questions }
-
-- 如何记录可信的执行结果与证据？
-- 如何让缺陷从发现走向验证和关闭？
-- 如何结合覆盖、风险和度量判断版本质量？
-
-!!! tip "主题快速跳转"
-    - [测试执行、结果与证据](#test-execution-and-evidence)
-    - [缺陷管理](#defect-management)
-    - [缺陷分析与过程改进](#defect-analysis-and-improvement)
-    - [覆盖、风险、度量与发布决策](#coverage-risk-metrics-release)
-
 ## 测试执行、结果与证据 { #test-execution-and-evidence }
 
 测试执行不只是把用例标记为通过或失败，还要记录版本、环境、数据和客观证据。无法判断或无法执行的情况也必须使用清晰状态表达。
@@ -38,8 +26,6 @@ description: 组织测试执行、缺陷闭环、质量度量、风险评价与�
 - **执行证据**：截图、视频、日志、请求响应、数据库记录等能支持测试结论的材料。
 - **测试日志**：记录执行时间、人员、环境、版本、结果和异常，便于追踪和复现。
 - **测试重现性**：失败场景应能在明确条件下重复触发；偶现问题也需记录频率和上下文。
-
-**相关知识：** [软件测试知识总览](index.md)。
 
 ## 缺陷管理 { #defect-management }
 
@@ -139,8 +125,6 @@ New → Assigned / Open → Fixed → Retest → Verified → Closed
 - **Cannot Reproduce**：当前条件下无法复现，需要补充信息或继续观察。
 - **Won't Fix**：团队明确决定不修复，通常需要记录理由和风险接受者。
 
-**相关知识：** [软件测试知识总览](index.md)。
-
 ## 缺陷分析与过程改进 { #defect-analysis-and-improvement }
 
 缺陷分析关注的不只是数量，而是缺陷为何产生、为何逃逸以及如何预防。指标应服务于趋势判断和过程改进，不能脱离上下文评价个人。
@@ -158,8 +142,6 @@ New → Assigned / Open → Fixed → Retest → Verified → Closed
 - **缺陷趋势**：观察新增、修复、重开和遗留缺陷随时间的变化，判断质量是否趋于稳定。
 - **缺陷老化**：缺陷从提交到当前或关闭所经历的时间，用于识别长期未处理问题。
 - **缺陷清除效率（DRE）**：衡量发布前发现缺陷占发布前后已知缺陷总量的比例。
-
-**相关知识：** [软件测试知识总览](index.md)。
 
 ## 覆盖、风险、度量与发布决策 { #coverage-risk-metrics-release }
 
@@ -214,12 +196,6 @@ New → Assigned / Open → Fixed → Retest → Verified → Closed
 - **常见误区**：用例数量多、Bug 数量多或代码覆盖率高，都不能单独证明测试质量高。
 
 **相关知识：** [测试计划](02-analysis-and-design.md#test-planning-and-resources)、[测试生命周期](01-foundations.md#testing-lifecycle-overview)。
-
-## 本页检查清单 { #execution-quality-page-checklist }
-
-- [ ] 执行结果关联明确的版本、环境、数据和证据。
-- [ ] 缺陷描述可复现，严重程度、优先级和状态清晰。
-- [ ] 发布结论同时说明覆盖情况、遗留问题和剩余风险。
 
 ---
 

@@ -7,18 +7,6 @@ description: 建设可维护的自动化测试、测试隔离、持续测试和�
 
 <div class="section-lead">通过分层自动化、可控依赖和持续反馈提高测试速度、稳定性与可重复性。</div>
 
-## 本页解决的问题 { #automation-engineering-page-questions }
-
-- 哪些场景值得自动化，如何控制维护成本？
-- 如何隔离不稳定或难以控制的外部依赖？
-- 如何把测试接入流水线并建设可复现、可观察的环境？
-
-!!! tip "主题快速跳转"
-    - [自动化测试策略](#test-automation-strategy)
-    - [测试隔离与测试替身](#test-isolation-and-doubles)
-    - [CI/CD 与持续测试](#continuous-testing-and-quality-gates)
-    - [环境工程化与可观测性](#environment-engineering-observability)
-
 ## 自动化测试策略 { #test-automation-strategy }
 
 自动化的价值来自快速、稳定、可重复的反馈，而不是替代所有人工测试。应优先选择稳定、高频和结果明确的场景，并持续治理失败定位与维护成本。
@@ -50,8 +38,6 @@ description: 建设可维护的自动化测试、测试隔离、持续测试和�
 - **不稳定测试（Flaky Test）**：相同代码下结果时过时不过，需要定位时序、环境、数据或依赖问题，不能只靠重复运行掩盖。
 - **自动化收益**：应综合执行频率、节省时间、维护成本、发现问题能力和反馈速度评价。
 - **常见工具**：pytest、unittest、JUnit、TestNG、Playwright、Selenium、Appium、Postman / Newman 等。
-
-**相关知识：** [软件测试知识总览](index.md)。
 
 ## 测试隔离与测试替身 { #test-isolation-and-doubles }
 
@@ -98,8 +84,6 @@ description: 建设可维护的自动化测试、测试隔离、持续测试和�
 - **金丝雀发布**：先向少量用户或流量发布，观察指标后逐步扩大范围。
 - **功能开关**：将代码部署与功能开放分离，便于灰度、回退和实验。
 
-**相关知识：** [软件测试知识总览](index.md)。
-
 ## 环境工程化与可观测性 { #environment-engineering-observability }
 
 版本控制、容器化、基础设施即代码和配置管理让环境可重建、可追踪。日志、指标与链路追踪则让失败能够被发现、关联和定位。
@@ -116,16 +100,8 @@ description: 建设可维护的自动化测试、测试隔离、持续测试和�
 - **可观测性**：结合日志、指标和追踪理解系统内部状态，并支持测试与生产诊断。
 - **环境清理**：定期清理测试数据、临时资源和失效账号，避免污染及成本浪费。
 
-**相关知识：** [软件测试知识总览](index.md)。
-
-## 本页检查清单 { #automation-engineering-page-checklist }
-
-- [ ] 自动化目标、层级和收益明确，不以脚本数量衡量价值。
-- [ ] 测试能够独立准备与清理数据，替身不会取代必要的真实集成。
-- [ ] 流水线失败可定位，环境和制品可追踪、可重复创建。
-
 ---
 
-**相关分类：** [← 质量属性与专项测试](05-quality-attributes.md) · [测试实践手册 →](07-practice-handbook.md)
+**相关分类：** [← 质量属性与专项测试](05-quality-attributes.md) · [测试能力与实践方法 →](07-practice-handbook.md)
 
 
