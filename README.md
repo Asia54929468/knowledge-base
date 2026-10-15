@@ -9,9 +9,9 @@
 | Codex 新会话接手规则 | [Codex 项目指令](AGENTS.md) |
 | 当前未完成任务与异常接续 | [项目交接](HANDOFF.md) |
 | 项目用途、本地运行和常用操作 | 本 README |
-| 新需求文件定位、长期规范和排障 | [技术指南任务映射](TECHNICAL_GUIDE.md#如何使用本指南) |
+| 项目架构、技术机制和故障排查 | [知识库项目技术指南](TECHNICAL_GUIDE.md) |
 
-网站正文以 `docs/` 为唯一日常维护来源；内容结构和核验方式见技术指南的[内容规范与结构维护](TECHNICAL_GUIDE.md#内容规范与结构维护)和[本地构建与基础检查](TECHNICAL_GUIDE.md#本地构建与基础检查)。
+网站正文以 `docs/` 为唯一日常维护来源；内容文件约束和核验方式见技术指南的[内容文件与构建约束](TECHNICAL_GUIDE.md#内容文件与构建约束)和[本地构建与基础检查](TECHNICAL_GUIDE.md#本地构建与基础检查)。
 
 ## 本地预览
 
@@ -38,7 +38,7 @@ powershell -ExecutionPolicy Bypass -File .\preview.ps1
 3. 在 `mkdocs.yml` 的 `nav` 中加入页面。
 4. 本地执行严格构建，再运行 `tools/check-content.ps1`，确认导航、链接、页面结构和搜索索引均正常。
 
-新增知识领域时，还要同步领域总览、首页入口和动态导航标题；页面如何拆分及何时合并见技术指南的[新增知识领域的组织原则](TECHNICAL_GUIDE.md#新增知识领域的组织原则)。
+新增知识领域时，还要同步领域总览、首页入口和动态导航标题；相关技术联动见技术指南的[导航、搜索与主题覆盖](TECHNICAL_GUIDE.md#导航搜索与主题覆盖)。
 
 ## GitHub 与 Pages
 
