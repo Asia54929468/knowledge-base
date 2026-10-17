@@ -7,7 +7,7 @@ description: Asia知识库首页
 
 # Asia知识库
 
-覆盖软件测试方法体系与 Python 接口自动化工程实践，包括概念、设计、实现、诊断与验收。
+覆盖软件测试方法体系、Python 接口自动化工程实践与测试工程师面试准备，包括概念、设计、实现、诊断与验收。
 
 [浏览知识领域](#knowledge-domains){ .md-button .md-button--primary }
 
@@ -15,7 +15,7 @@ description: Asia知识库首页
 
 ## 知识领域 { #knowledge-domains }
 
-<div class="grid cards" markdown>
+<div class="grid cards knowledge-domain-grid" markdown>
 
 -   **软件测试**
 
@@ -28,6 +28,12 @@ description: Asia知识库首页
     从框架设计、核心代码和测试实践，到安全、排障与工程化维护。
 
     [进入接口自动化 →](pytest-api-automation/index.md)
+
+-   **测试工程师面试**
+
+    从理论基础和项目经验，到场景分析、职业认知与人工智能应用。
+
+    [进入测试工程师面试 →](test-engineer-interview/index.md)
 
 </div>
 

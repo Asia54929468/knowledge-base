@@ -39,7 +39,7 @@ hooks:
 nav:
   - 首页: index.md
   - 软件测试:
-      - 知识体系总览: software-testing/index.md
+      - 领域总览: software-testing/index.md
       - 01 测试基础与生命周期: software-testing/01-foundations.md
       - 02 测试分析、设计与准备: software-testing/02-analysis-and-design.md
       - 03 测试执行与质量管理: software-testing/03-execution-and-quality.md
@@ -48,7 +48,7 @@ nav:
       - 06 自动化与测试工程: software-testing/06-automation-and-engineering.md
       - 07 测试能力与实践方法: software-testing/07-practice-handbook.md
   - 接口自动化:
-      - 框架总览: pytest-api-automation/index.md
+      - 领域总览: pytest-api-automation/index.md
       - 01 框架设计与项目结构: pytest-api-automation/01-framework-design-and-structure.md
       - 02 项目基础与配置管理: pytest-api-automation/02-foundation-and-configuration.md
       - 03 HTTP 请求与 API Object: pytest-api-automation/03-http-and-api-object.md
@@ -57,6 +57,12 @@ nav:
       - 06 数据驱动、断言与测试实现: pytest-api-automation/06-data-driven-assertions-and-tests.md
       - 07 测试设计与工程化边界: pytest-api-automation/07-test-design-and-engineering.md
       - 08 运行、排障与验收: pytest-api-automation/08-commands-troubleshooting-and-review.md
+  - 测试工程师面试:
+      - 领域总览: test-engineer-interview/index.md
+      - 01 理论基础与测试流程: test-engineer-interview/01-theory-foundations.md
+      - 02 项目经验: test-engineer-interview/02-project-experience.md
+      - 03 场景分析与业务测试: test-engineer-interview/03-scenario-analysis.md
+      - 04 职业认知与人工智能: test-engineer-interview/04-career-and-ai.md
 
 plugins:
   - search:

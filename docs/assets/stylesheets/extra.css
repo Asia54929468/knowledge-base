@@ -555,6 +555,173 @@ input {
   }
 }
 
+/* 面试回答思路按题型展示：流程强调顺序，维度和观点保留并列关系。 */
+.md-typeset .interview-answer {
+  margin: 1rem 0 1.65rem;
+}
+
+.md-typeset ol.interview-answer--flow,
+.md-typeset ul.interview-answer--dimensions,
+.md-typeset ul.interview-answer__supports {
+  display: grid;
+  min-width: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset ol.interview-answer--flow {
+  grid-template-columns: repeat(var(--interview-answer-columns), minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.interview-answer--3 {
+  --interview-answer-columns: 3;
+}
+
+.interview-answer--4 {
+  --interview-answer-columns: 4;
+}
+
+.interview-answer--5 {
+  --interview-answer-columns: 5;
+}
+
+.md-typeset ol.interview-answer--flow > li {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 2.45rem 0.68rem 0.72rem;
+  border: 1px solid var(--note-border);
+  background: var(--note-surface);
+}
+
+.md-typeset .interview-answer__index {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.68rem;
+  display: grid;
+  width: 1.45rem;
+  height: 1.45rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--note-accent-soft);
+  color: var(--note-ink);
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.md-typeset ol.interview-answer--flow > li:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -0.95rem;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-top: 0.1rem solid var(--note-accent);
+  border-right: 0.1rem solid var(--note-accent);
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.md-typeset ul.interview-answer--dimensions {
+  grid-template-columns: repeat(var(--interview-answer-columns), minmax(0, 1fr));
+  gap: 0.72rem;
+}
+
+.md-typeset ul.interview-answer--dimensions > li {
+  min-width: 0;
+  margin: 0;
+  padding: 0.72rem 0.78rem;
+  border-left: 0.14rem solid var(--note-accent);
+  background: color-mix(in srgb, var(--note-surface) 76%, transparent);
+}
+
+.md-typeset .interview-answer--viewpoint {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.md-typeset .interview-answer__thesis {
+  margin: 0;
+  padding: 0.58rem 0.78rem;
+  border-left: 0.14rem solid var(--note-accent);
+  background: color-mix(in srgb, var(--note-accent-soft) 68%, var(--note-surface));
+  color: var(--note-ink);
+  font-size: 0.72rem;
+  font-weight: 620;
+  line-height: 1.55;
+}
+
+.md-typeset ul.interview-answer__supports {
+  grid-template-columns: repeat(var(--interview-answer-columns), minmax(0, 1fr));
+  gap: 0.78rem;
+  margin: 0;
+}
+
+.md-typeset ul.interview-answer__supports > li {
+  min-width: 0;
+  margin: 0;
+  padding: 0.52rem 0.72rem;
+  border-left: 1px solid var(--note-border);
+  background: color-mix(in srgb, var(--note-surface) 76%, transparent);
+}
+
+.md-typeset .interview-answer__label,
+.md-typeset .interview-answer__note {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.md-typeset .interview-answer__label {
+  margin-bottom: 0.25rem;
+  color: var(--note-ink);
+  font-size: 0.66rem;
+  font-weight: 680;
+  line-height: 1.45;
+}
+
+.md-typeset .interview-answer__note {
+  color: var(--note-muted);
+  font-size: 0.61rem;
+  line-height: 1.55;
+}
+
+@media screen and (max-width: 60em) {
+  .md-typeset ol.interview-answer--flow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.45rem;
+  }
+
+  .md-typeset ol.interview-answer--flow > li {
+    padding: 0.72rem 0.72rem 0.72rem 3rem;
+  }
+
+  .md-typeset .interview-answer__index {
+    top: 50%;
+    left: 0.72rem;
+    transform: translateY(-50%);
+  }
+
+  .md-typeset ol.interview-answer--flow > li:not(:last-child)::after {
+    top: auto;
+    right: 50%;
+    bottom: -1.05rem;
+    transform: translate(50%, 50%) rotate(135deg);
+  }
+
+  .md-typeset ul.interview-answer--dimensions,
+  .md-typeset ul.interview-answer__supports {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 45em) {
+  .md-typeset ul.interview-answer--dimensions,
+  .md-typeset ul.interview-answer__supports {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* 首页内容组件沿用现有结构，改为工作台风格。 */
 .note-hero {
   position: relative;
@@ -601,6 +768,10 @@ input {
   background: var(--note-surface);
 }
 
+.md-typeset .knowledge-domain-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .md-footer {
   background: #171a21;
 }
@@ -631,6 +802,10 @@ input {
 
   .note-hero {
     padding: 1.5rem 1.25rem;
+  }
+
+  .md-typeset .knowledge-domain-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
 }
