@@ -57,6 +57,10 @@ nav:
       - 06 数据驱动、断言与测试实现: pytest-api-automation/06-data-driven-assertions-and-tests.md
       - 07 测试设计与工程化边界: pytest-api-automation/07-test-design-and-engineering.md
       - 08 运行、排障与验收: pytest-api-automation/08-commands-troubleshooting-and-review.md
+  - 工作资源与技巧:
+      - 领域总览: work-resources-and-tips/index.md
+      - 01 常用网站与在线工具: work-resources-and-tips/01-useful-websites.md
+      - 02 实用技巧: work-resources-and-tips/02-practical-tips.md
   - 测试工程师面试:
       - 领域总览: test-engineer-interview/index.md
       - 01 理论基础与测试流程: test-engineer-interview/01-theory-foundations.md
