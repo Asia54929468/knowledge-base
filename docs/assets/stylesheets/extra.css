@@ -455,6 +455,278 @@ input {
   color: var(--note-muted);
 }
 
+/* 知识正文组件：保持信息始终可见，并用内容关系代替连续长列表。 */
+.md-typeset dl.knowledge-definitions {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 0.34fr) minmax(0, 1fr);
+  margin: 1rem 0 1.45rem;
+  border-top: 1px solid var(--note-border);
+}
+
+.md-typeset .knowledge-definitions dt,
+.md-typeset .knowledge-definitions dd {
+  min-width: 0;
+  margin: 0;
+  padding: 0.58rem 0.72rem;
+  border-bottom: 1px solid var(--note-border);
+}
+
+.md-typeset .knowledge-definitions dt {
+  border-left: 0.12rem solid color-mix(in srgb, var(--note-accent) 72%, var(--note-border));
+  background: color-mix(in srgb, var(--note-accent-soft) 34%, transparent);
+  color: var(--note-ink);
+  font-size: 0.68rem;
+  font-weight: 680;
+  line-height: 1.55;
+}
+
+.md-typeset .knowledge-definitions dd {
+  background: color-mix(in srgb, var(--note-surface) 44%, transparent);
+  color: var(--md-typeset-color);
+  font-size: 0.68rem;
+  line-height: 1.65;
+}
+
+.md-typeset dl.knowledge-definitions--compact {
+  grid-template-columns: minmax(7.4rem, 0.28fr) minmax(0, 1fr);
+}
+
+.md-typeset .knowledge-definitions--compact dt,
+.md-typeset .knowledge-definitions--compact dd {
+  padding-top: 0.46rem;
+  padding-bottom: 0.46rem;
+}
+
+.knowledge-grid {
+  display: grid;
+  gap: 0.68rem;
+  margin: 1rem 0 1.45rem;
+}
+
+.knowledge-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.knowledge-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.knowledge-grid > section {
+  min-width: 0;
+  padding: 0.66rem 0.72rem;
+  border-left: 0.12rem solid color-mix(in srgb, var(--note-accent) 52%, var(--note-border));
+  background: color-mix(in srgb, var(--note-surface) 56%, transparent);
+}
+
+.knowledge-grid.knowledge-compare > section {
+  border: 1px solid var(--note-border);
+  border-top: 0.12rem solid var(--note-accent);
+  background: color-mix(in srgb, var(--note-surface) 76%, transparent);
+}
+
+.md-typeset .knowledge-grid h4,
+.md-typeset .knowledge-group > h4 {
+  margin: 0 0 0.24rem;
+  color: var(--note-ink);
+  font-size: 0.7rem;
+  font-weight: 680;
+  line-height: 1.45;
+}
+
+.md-typeset .knowledge-grid p {
+  margin: 0;
+  color: var(--md-typeset-color);
+  font-size: 0.66rem;
+  line-height: 1.62;
+}
+
+.knowledge-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.82rem;
+  margin: 1rem 0 1.45rem;
+}
+
+.knowledge-group {
+  min-width: 0;
+  padding: 0.72rem;
+  border: 1px solid var(--note-border);
+  background: color-mix(in srgb, var(--note-surface) 54%, transparent);
+}
+
+.md-typeset .knowledge-group > h4 {
+  padding-bottom: 0.42rem;
+  border-bottom: 1px solid var(--note-border);
+}
+
+.md-typeset .knowledge-group .knowledge-definitions {
+  grid-template-columns: minmax(6.5rem, 0.33fr) minmax(0, 1fr);
+  margin: 0.6rem 0 0;
+}
+
+.md-typeset .knowledge-group .knowledge-definitions dt,
+.md-typeset .knowledge-group .knowledge-definitions dd {
+  padding-right: 0.52rem;
+  padding-left: 0.52rem;
+  background: transparent;
+  font-size: 0.63rem;
+}
+
+.md-typeset .knowledge-group__note {
+  margin: 0.65rem 0 0;
+  padding: 0.5rem 0.58rem;
+  border-left: 0.12rem solid var(--note-accent);
+  background: color-mix(in srgb, var(--note-accent-soft) 32%, transparent);
+  color: var(--note-muted);
+  font-size: 0.61rem;
+  line-height: 1.6;
+}
+
+.md-typeset .knowledge-group > ul:not([class]),
+.md-typeset .knowledge-group > ol:not([class]) {
+  margin: 0.52rem 0 0;
+  padding-left: 1rem;
+}
+
+.md-typeset .knowledge-group > ul:not([class]) > li,
+.md-typeset .knowledge-group > ol:not([class]) > li {
+  margin: 0.22rem 0;
+  color: var(--md-typeset-color);
+  font-size: 0.63rem;
+  line-height: 1.58;
+}
+
+.md-typeset ul.knowledge-compact-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem 0.68rem;
+  margin: 0.9rem 0 1.35rem;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset ul.knowledge-compact-list--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.md-typeset .knowledge-compact-list > li {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 0.46rem 0.58rem 0.46rem 1.18rem;
+  border-bottom: 1px solid var(--note-border);
+  background: color-mix(in srgb, var(--note-surface) 38%, transparent);
+  color: var(--md-typeset-color);
+  font-size: 0.64rem;
+  line-height: 1.55;
+}
+
+.md-typeset .knowledge-compact-list > li::before {
+  position: absolute;
+  top: 0.78rem;
+  left: 0.58rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background: var(--note-accent);
+  content: "";
+}
+
+.md-typeset ol.knowledge-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.72rem;
+  margin: 1rem 0 1.45rem;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset .knowledge-flow > li {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 0.7rem 0.7rem 0.7rem 2.45rem;
+  border: 1px solid var(--note-border);
+  background: color-mix(in srgb, var(--note-surface) 64%, transparent);
+}
+
+.md-typeset .knowledge-flow .knowledge-flow__index {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.68rem;
+  display: grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--note-accent) 64%, var(--note-border));
+  border-radius: 50%;
+  color: var(--note-accent);
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.md-typeset .knowledge-flow > li > span {
+  display: block;
+  color: var(--note-muted);
+  font-size: 0.63rem;
+  line-height: 1.58;
+}
+
+.md-typeset .knowledge-flow .knowledge-flow__label {
+  position: static;
+  width: auto;
+  height: auto;
+  margin-bottom: 0.18rem;
+  border: 0;
+  border-radius: 0;
+  color: var(--note-ink);
+  font-size: 0.68rem;
+  font-weight: 680;
+  line-height: 1.45;
+}
+
+@media screen and (max-width: 60em) {
+  .knowledge-grid--3,
+  .md-typeset ol.knowledge-flow,
+  .md-typeset ul.knowledge-compact-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .knowledge-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 44.984375em) {
+  .md-typeset dl.knowledge-definitions,
+  .md-typeset dl.knowledge-definitions--compact,
+  .md-typeset .knowledge-group .knowledge-definitions,
+  .knowledge-grid--2,
+  .knowledge-grid--3,
+  .md-typeset ol.knowledge-flow,
+  .md-typeset ul.knowledge-compact-list,
+  .md-typeset ul.knowledge-compact-list--2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .knowledge-definitions dt {
+    padding-bottom: 0.22rem;
+    border-bottom: 0;
+  }
+
+  .md-typeset .knowledge-definitions dd {
+    padding-top: 0.22rem;
+  }
+
+  .knowledge-grid,
+  .knowledge-groups,
+  .md-typeset ol.knowledge-flow,
+  .md-typeset ul.knowledge-compact-list {
+    gap: 0.58rem;
+  }
+}
+
 /* 响应式执行链路：语义顺序由列表保证，箭头只强化视觉方向。 */
 .execution-flow {
   display: grid;
