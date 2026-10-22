@@ -9,26 +9,20 @@ description: 实现概括日志、手动详细日志、失败自动补记、去�
 
 ## 日志行为 { #logging-behavior }
 
-```text
-接口调用完成
-    ├─ 默认：立即记录一行概括日志
-    ├─ details=True：立即记录概括日志和详细日志
-    └─ 用例失败且尚未输出详情：Fixture 自动补记详细日志
-```
+<div class="knowledge-grid knowledge-grid--3 knowledge-compare">
+  <section><h4>默认摘要</h4><p>接口调用完成后立即记录一行概括日志。</p></section>
+  <section><h4>手动详情</h4><p><code>details=True</code> 时立即记录概括日志和详细日志。</p></section>
+  <section><h4>失败补记</h4><p>用例失败且尚未输出详情时，由 Fixture 自动补记详细日志。</p></section>
+</div>
 
 `common/http_logging.py` 负责格式化和输出，失败后的自动补记由 [`log_http` Fixture](05-pytest-orchestration-and-state.md#log-http-fixture) 负责。
 
 ### 默认报告与本地日志 { #html-report-and-local-log }
 
-```text
-pytest.ini 默认参数
-    ├─ --html=reports/report.html：生成自包含 HTML 报告
-    └─ --no-log-file：移除本地文件 Handler
-                         ↓
-                  pytest 捕获项目日志
-                         ↓
-                  HTML 报告展示日志
-```
+<div class="knowledge-grid knowledge-grid--2 knowledge-compare">
+  <section><h4>HTML 报告</h4><p><code>--html=reports/report.html</code> 生成自包含报告；pytest 捕获项目日志并在报告中展示。</p></section>
+  <section><h4>本地日志文件</h4><p><code>--no-log-file</code> 移除本地文件 Handler，避免创建 <code>logs/</code> 目录，但不关闭 pytest 日志捕获。</p></section>
+</div>
 
 `--no-log-file` 不会关闭日志，也不会影响摘要、手动详情或失败自动详情；它只让 `setup_logging(write_to_file=False)` 移除文件 Handler，避免创建 `logs/` 目录。`log_cli = false` 关闭实时输出，但沿用 pytest 默认行为，失败摘要仍可能在终端展示 `Captured log`。
 

@@ -13,12 +13,14 @@ description: 处理接口测试的场景覆盖、状态恢复、资源缓存、�
 
 每个接口至少从以下角度选择与风险匹配的场景：
 
-- 正常输入和主要成功分支。
-- 必填项缺失、空值、类型错误和边界值。
-- 未认证、Token 失效和权限不足。
-- 路径参数不存在、格式错误或包含特殊字符。
-- 重复请求、幂等性和状态冲突。
-- 非 JSON 响应、超时和依赖服务异常。
+<div class="knowledge-grid knowledge-grid--3">
+  <section><h4>成功路径</h4><p>正常输入和主要成功分支。</p></section>
+  <section><h4>输入校验</h4><p>必填项缺失、空值、类型错误和边界值。</p></section>
+  <section><h4>认证授权</h4><p>未认证、Token 失效和权限不足。</p></section>
+  <section><h4>路径参数</h4><p>路径参数不存在、格式错误或包含特殊字符。</p></section>
+  <section><h4>幂等与冲突</h4><p>重复请求、幂等性和状态冲突。</p></section>
+  <section><h4>依赖异常</h4><p>非 JSON 响应、超时和依赖服务异常。</p></section>
+</div>
 
 不要为了“覆盖模板”机械生成无业务价值的组合。YAML 适合多组同构输入；存在分支、轮询、恢复或多接口协作的流程应留在 Python 中。
 
@@ -26,11 +28,13 @@ description: 处理接口测试的场景覆盖、状态恢复、资源缓存、�
 
 推荐从外到内：
 
-1. HTTP 状态码。
-2. 响应是否能按预期格式解析。
-3. 通用业务状态。
-4. 关键字段存在性和类型。
-5. 与本场景直接相关的业务值或状态变化。
+<ol class="knowledge-flow">
+  <li><span class="knowledge-flow__index" aria-hidden="true">1</span><span class="knowledge-flow__label">HTTP 状态</span><span>检查 HTTP 状态码。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">2</span><span class="knowledge-flow__label">响应格式</span><span>确认响应能按预期格式解析。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">3</span><span class="knowledge-flow__label">业务状态</span><span>验证通用业务状态。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">4</span><span class="knowledge-flow__label">字段结构</span><span>检查关键字段存在性和类型。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">5</span><span class="knowledge-flow__label">场景结果</span><span>验证与本场景直接相关的业务值或状态变化。</span></li>
+</ol>
 
 失败信息不得直接拼接完整敏感响应；需要上下文时依赖脱敏日志。
 
@@ -119,14 +123,26 @@ class ResourceManager:
 
 ## 重试边界 { #retry-boundaries }
 
-自动重试只适合短暂、可恢复且重复执行安全的失败，例如连接重置、明确的限流响应或最终一致性轮询。
-
-不应自动重试：
-
-- 断言失败或业务规则失败。
-- 登录凭据错误、权限不足等确定性问题。
-- 创建、扣费、删除等非幂等操作。
-- 可能掩盖服务不稳定的所有失败。
+<div class="knowledge-grid knowledge-grid--2 knowledge-compare">
+  <section>
+    <h4>可以重试</h4>
+    <p>只适合短暂、可恢复且重复执行安全的失败。</p>
+    <ul>
+      <li>连接重置。</li>
+      <li>明确的限流响应。</li>
+      <li>最终一致性轮询。</li>
+    </ul>
+  </section>
+  <section>
+    <h4>不应重试</h4>
+    <ul>
+      <li>断言失败或业务规则失败。</li>
+      <li>登录凭据错误、权限不足等确定性问题。</li>
+      <li>创建、扣费、删除等非幂等操作。</li>
+      <li>可能掩盖服务不稳定的所有失败。</li>
+    </ul>
+  </section>
+</div>
 
 框架默认不内置重试。项目确有需要时，应明确可重试方法、状态码、次数、退避和日志。
 

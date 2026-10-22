@@ -220,9 +220,11 @@ class ExampleApi:
 
 这是教学占位模块，不代表真实业务协议。新项目接入时只需要仿照三个动作：
 
-1. 把接口路径定义为类常量。
-2. 用方法参数表达调用方必须提供的数据。
-3. 将参数映射为 `json`、`data`、`params`、`files` 或 `path_params` 后返回原始 Response。
+<ol class="knowledge-flow">
+  <li><span class="knowledge-flow__index" aria-hidden="true">1</span><span class="knowledge-flow__label">定义路径</span><span>把接口路径定义为类常量。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">2</span><span class="knowledge-flow__label">声明输入</span><span>用方法参数表达调用方必须提供的数据。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">3</span><span class="knowledge-flow__label">映射请求</span><span>将参数映射为 <code>json</code>、<code>data</code>、<code>params</code>、<code>files</code> 或 <code>path_params</code> 后返回原始 Response。</span></li>
+</ol>
 
 认证加密、公钥获取、签名和设备信息属于具体协议；只有目标系统确实需要时，才在对应项目中增加。
 

@@ -329,15 +329,19 @@ def log_http(request: pytest.FixtureRequest) -> Generator[LogHttp, None, None]:
 
 ## `log_http` Fixture 的三种路径 { #log-http-fixture }
 
-默认模式：
+<div class="knowledge-grid knowledge-grid--3 knowledge-compare">
+  <section><h4>默认摘要</h4><p>立即记录一行摘要；如果后续断言失败，Fixture 在 teardown 阶段自动补记该响应的详情。</p></section>
+  <section><h4>手动调试</h4><p>传入 <code>details=True</code> 主动输出详情；成功输出后标记 <code>details_logged</code>，避免失败时重复记录。</p></section>
+  <section><h4>失败补记</h4><p>详情级别未启用或即时日志异常时不提前标记；用例失败后仍由 Fixture 尝试补记最后一个 Response。</p></section>
+</div>
+
+**默认调用：**
 
 ```python
 log_http(response, title="登录成功")
 ```
 
-立即记录一行摘要；如果后续断言失败，Fixture 在 teardown 阶段自动补记该响应的详情。
-
-手动调试：
+**手动调试调用：**
 
 ```python
 log_http(
@@ -347,8 +351,6 @@ log_http(
     include_headers=True,
 )
 ```
-
-在 DEBUG 详情级别启用且输出成功后，将 `details_logged` 标记为真；即使用例随后失败，也不会重复输出相同详情。详情级别未启用或即时日志异常时不标记，失败后仍可尝试补记。
 
 即时日志或 teardown 详情自身异常时，只尽力记录简短的日志处理错误，不中断 testcase，也不替换已经产生的原始失败。
 

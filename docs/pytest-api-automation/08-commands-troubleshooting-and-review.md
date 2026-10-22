@@ -88,14 +88,16 @@ pytest -o addopts="-v --html=reports/report.html --self-contained-html"
 
 ## 新增接口固定步骤 { #adding-an-endpoint }
 
-1. 在对应 API Object 增加路径常量和方法，只完成参数到 HTTP 调用的映射。
-2. 若有多组同构输入，在对应 testdata YAML 增加场景组。
-3. 在 testcase 中加载数据或直接编排单一场景。
-4. 复用已有 Fixture 获取客户端、认证状态和 API Object。
-5. 在断言前调用 `log_http`。
-6. 按 HTTP、格式、业务状态、关键字段和业务值的顺序断言。
-7. 若修改服务端状态，添加 marker、恢复逻辑和环境限制。
-8. 先运行 `--collect-only`，再运行目标测试，最后执行相关回归。
+<ol class="knowledge-flow">
+  <li><span class="knowledge-flow__index" aria-hidden="true">1</span><span class="knowledge-flow__label">接口映射</span><span>在对应 API Object 增加路径常量和方法，只完成参数到 HTTP 调用的映射。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">2</span><span class="knowledge-flow__label">测试数据</span><span>若有多组同构输入，在对应 testdata YAML 增加场景组。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">3</span><span class="knowledge-flow__label">场景编排</span><span>在 testcase 中加载数据或直接编排单一场景。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">4</span><span class="knowledge-flow__label">复用依赖</span><span>复用已有 Fixture 获取客户端、认证状态和 API Object。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">5</span><span class="knowledge-flow__label">登记日志</span><span>在断言前调用 <code>log_http</code>。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">6</span><span class="knowledge-flow__label">分层断言</span><span>按 HTTP、格式、业务状态、关键字段和业务值的顺序断言。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">7</span><span class="knowledge-flow__label">恢复状态</span><span>若修改服务端状态，添加 marker、恢复逻辑和环境限制。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">8</span><span class="knowledge-flow__label">验证回归</span><span>先运行 <code>--collect-only</code>，再运行目标测试，最后执行相关回归。</span></li>
+</ol>
 
 出现第二个稳定业务域时，再将 `api/`、`testcase/` 和 `testdata/` 按相同领域名同步分目录。
 

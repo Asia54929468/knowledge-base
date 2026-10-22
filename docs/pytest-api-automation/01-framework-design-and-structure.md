@@ -11,14 +11,16 @@ description: 理解通用 pytest 接口自动化框架的分层、目录、依�
 
 接口自动化框架需要让配置、数据、请求、认证状态、断言、日志与清理组成稳定、可维护的测试执行闭环。
 
-1. **请求复用**：`HttpClient` 统一处理 Base URL、Session、Header、Token、超时、TLS、路径参数和传输异常。
-2. **分层解耦**：Testcase 负责编排场景与断言，API Object 负责接口路径和参数映射，HTTP 层负责协议传输。
-3. **环境隔离**：通过运行配置切换地址、凭据和请求默认值，不在测试代码中编写环境判断。
-4. **数据驱动**：使用 YAML 为同一测试逻辑提供正常、异常和边界场景，避免复制测试流程。
-5. **状态管理**：Manager 和 Fixture 负责 Token 的复用、刷新与清理，以及公共资源的准备和释放。
-6. **失败可诊断**：通过时记录简洁摘要，失败时补充经过脱敏和截断的请求响应详情，同时保留原始测试异常。
-7. **可重复执行**：用例不依赖执行顺序；状态修改必须恢复，Session 和缓存必须在作用域结束后释放。
-8. **安全可控**：真实凭据不进入版本库，敏感信息不直接写入日志，生产环境禁止执行破坏性测试。
+<div class="knowledge-grid knowledge-grid--2">
+  <section><h4>请求复用</h4><p><code>HttpClient</code> 统一处理 Base URL、Session、Header、Token、超时、TLS、路径参数和传输异常。</p></section>
+  <section><h4>分层解耦</h4><p>Testcase 负责编排场景与断言，API Object 负责接口路径和参数映射，HTTP 层负责协议传输。</p></section>
+  <section><h4>环境隔离</h4><p>通过运行配置切换地址、凭据和请求默认值，不在测试代码中编写环境判断。</p></section>
+  <section><h4>数据驱动</h4><p>使用 YAML 为同一测试逻辑提供正常、异常和边界场景，避免复制测试流程。</p></section>
+  <section><h4>状态管理</h4><p>Manager 和 Fixture 负责 Token 的复用、刷新与清理，以及公共资源的准备和释放。</p></section>
+  <section><h4>失败可诊断</h4><p>通过时记录简洁摘要，失败时补充经过脱敏和截断的请求响应详情，同时保留原始测试异常。</p></section>
+  <section><h4>可重复执行</h4><p>用例不依赖执行顺序；状态修改必须恢复，Session 和缓存必须在作用域结束后释放。</p></section>
+  <section><h4>安全可控</h4><p>真实凭据不进入版本库，敏感信息不直接写入日志，生产环境禁止执行破坏性测试。</p></section>
+</div>
 
 数据库、消息队列、Schema、通知和加密等能力只在测试链路确实需要时引入。
 
@@ -117,9 +119,11 @@ testdata/<domain>/
 
 ### 一条用例的生命周期
 
-1. pytest 按 `pytest.ini` 收集 testcase，并加载 `conftest.py` 中的 Hook 与 Fixture 定义。
-2. `data.py` 在收集阶段读取 YAML，`parametrize` 生成带 `title` 的测试实例；此时不访问真实接口，也不要求真实凭据。
-3. 用例开始执行后，Fixture 加载配置、初始化日志和客户端，Manager 按需获取或复用 Token。
-4. Testcase 调用 API Object，HttpClient 处理 URL、路径参数、认证、超时和 TLS 后发送请求。
-5. Response 返回 Testcase；先登记摘要日志，再按 HTTP 状态、业务码、结构和业务数据分层断言，失败时补记经过脱敏和截断的详情。
-6. `yield` Fixture 关闭 Session、清理缓存或恢复状态，pytest 汇总结果并生成自包含 HTML 报告。
+<ol class="knowledge-flow">
+  <li><span class="knowledge-flow__index" aria-hidden="true">1</span><span class="knowledge-flow__label">收集</span><span>pytest 按 <code>pytest.ini</code> 收集 testcase，并加载 <code>conftest.py</code> 中的 Hook 与 Fixture 定义。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">2</span><span class="knowledge-flow__label">生成实例</span><span><code>data.py</code> 在收集阶段读取 YAML，<code>parametrize</code> 生成带 <code>title</code> 的测试实例；此时不访问真实接口，也不要求真实凭据。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">3</span><span class="knowledge-flow__label">准备依赖</span><span>用例开始执行后，Fixture 加载配置、初始化日志和客户端，Manager 按需获取或复用 Token。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">4</span><span class="knowledge-flow__label">发送请求</span><span>Testcase 调用 API Object，HttpClient 处理 URL、路径参数、认证、超时和 TLS 后发送请求。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">5</span><span class="knowledge-flow__label">记录与断言</span><span>Response 返回 Testcase；先登记摘要日志，再按 HTTP 状态、业务码、结构和业务数据分层断言，失败时补记经过脱敏和截断的详情。</span></li>
+  <li><span class="knowledge-flow__index" aria-hidden="true">6</span><span class="knowledge-flow__label">清理与汇总</span><span><code>yield</code> Fixture 关闭 Session、清理缓存或恢复状态，pytest 汇总结果并生成自包含 HTML 报告。</span></li>
+</ol>

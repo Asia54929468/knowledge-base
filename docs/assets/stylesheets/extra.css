@@ -540,6 +540,20 @@ input {
   line-height: 1.62;
 }
 
+.md-typeset .knowledge-grid > section > ul,
+.md-typeset .knowledge-grid > section > ol {
+  margin: 0.42rem 0 0;
+  padding-left: 1rem;
+}
+
+.md-typeset .knowledge-grid > section > ul > li,
+.md-typeset .knowledge-grid > section > ol > li {
+  margin: 0.2rem 0;
+  color: var(--md-typeset-color);
+  font-size: 0.63rem;
+  line-height: 1.58;
+}
+
 .knowledge-groups {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
