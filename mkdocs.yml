@@ -60,7 +60,8 @@ nav:
   - 工作资源与技巧:
       - 领域总览: work-resources-and-tips/index.md
       - 01 常用网站与在线工具: work-resources-and-tips/01-useful-websites.md
-      - 02 实用技巧: work-resources-and-tips/02-practical-tips.md
+      - 02 技巧与指令: work-resources-and-tips/02-practical-tips.md
+      - 03 排障与验证: work-resources-and-tips/03-troubleshooting-and-validation.md
   - 测试工程师面试:
       - 领域总览: test-engineer-interview/index.md
       - 01 理论基础与测试流程: test-engineer-interview/01-theory-foundations.md

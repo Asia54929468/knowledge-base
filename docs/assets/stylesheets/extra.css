@@ -497,6 +497,44 @@ input {
   padding-bottom: 0.46rem;
 }
 
+/* 独立短命令使用紧凑速查表，保留代码复制能力并避免重复标题占用纵向空间。 */
+.md-typeset dl.command-reference {
+  grid-template-columns: minmax(9rem, 0.3fr) minmax(0, 1fr);
+  margin-top: 0.75rem;
+}
+
+.md-typeset .command-reference dt {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.md-typeset .command-reference .highlight,
+.md-typeset .command-reference pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.md-typeset .command-reference dd > p {
+  margin: 0.32rem 0 0;
+  color: var(--note-muted);
+  font-size: 0.63rem;
+  line-height: 1.55;
+}
+
+.md-typeset .command-reference dd > :first-child {
+  margin-top: 0;
+}
+
+.md-typeset .command-reference dd > :last-child {
+  margin-bottom: 0;
+}
+
+.md-typeset .command-reference dd > .highlight + .highlight {
+  margin-top: 0.38rem;
+}
+
 .knowledge-grid {
   display: grid;
   gap: 0.68rem;
