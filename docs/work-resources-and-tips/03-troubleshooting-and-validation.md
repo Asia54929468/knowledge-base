@@ -13,19 +13,18 @@ description: 网络、Linux、客户端和硬件排障命令与路径
 
 1. 查询目标程序使用的 UDP 端口：
 
-   ```bat
-   netstat -ano -p udp
-   ```
+    ```bat
+    netstat -ano -p udp
+    ```
 
 2. 根据 PID 在任务管理器中定位目标进程。
 3. 在 [Clumsy](https://github.com/jagt/clumsy) 中设置过滤条件：
 
-   ```text
-   udp and (udp.SrcPort == <端口号> or udp.DstPort == <端口号>)
-   ```
+    ```text
+    udp and (udp.SrcPort == <端口号> or udp.DstPort == <端口号>)
+    ```
 
 4. 配置延迟、丢包、乱序或限速并执行测试。
-5. 测试结束后停止 Clumsy。
 
 ## Linux 常用排障
 

@@ -11,7 +11,13 @@ description: 下载、远程连接和软件包处理等常用命令
 
 <dl class="knowledge-definitions knowledge-definitions--compact command-reference">
   <dt>GitHub 下载加速</dt>
-  <dd>ghfast 等第三方服务。</dd>
+  <dd markdown>
+
+```bash
+curl -L -O "https://ghfast.top/<GitHub 安装包下载链接>"
+```
+
+  </dd>
   <dt>Windows：校验文件哈希值</dt>
   <dd markdown>
 
@@ -70,7 +76,7 @@ sudo dpkg -i <软件包文件>.deb
   <dd markdown>
 
 ```bash
-sudo apt --fix-broken install
+sudo apt install -f -y
 ```
 
   </dd>
